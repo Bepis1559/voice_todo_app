@@ -20,6 +20,7 @@ This is a voice-controlled to-do application that allows users to add, remove, r
  2. Install dependancies
     ```bash
     npm install
+    You might need to use --force tag , since using react 19.
 
  3. Start the development server:
     ```bash
