@@ -14,8 +14,8 @@ This is a voice-controlled to-do application that allows users to add, remove, r
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/voice-todo-app.git
-   cd voice-todo-app
+   git clone https://github.com/Bepis1559/voice_todo_app.git
+   cd voice_todo_app
 
  2. Install dependancies
     ```bash
