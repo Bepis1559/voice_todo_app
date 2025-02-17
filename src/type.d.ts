@@ -12,3 +12,5 @@ type weeklyTasks = {
   Saturday: task[];
   Sunday: task[];
 };
+
+type commandKeyword = "remove" | "reset" | "all";

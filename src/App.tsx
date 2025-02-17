@@ -1,5 +1,5 @@
 import { WeeklyTasksTable } from "./components/WeeklyTasksTable";
-import { introSpeech } from "./data/speechPhrases";
+import { introSpeech } from "./data/phrases";
 import { useAddTask } from "./hooks/useAddTask";
 function App() {
   const { weeklyTasks, transcript, speak, baseSpeakOptions } = useAddTask();
@@ -14,7 +14,15 @@ function App() {
           onClick={() => speak({ text: introSpeech, ...baseSpeakOptions })}
           type="button"
           className="btn btn-primary">
-          Start talking
+          Read instructions
+        </button>
+        <button
+          onClick={() =>
+            speak({ text: "Listening for tasks", ...baseSpeakOptions })
+          }
+          type="button"
+          className="btn btn-primary">
+          Start listening
         </button>
       </div>
     </main>
