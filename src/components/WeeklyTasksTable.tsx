@@ -23,8 +23,8 @@ export function WeeklyTasksTable({ weeklyTasks }: props) {
             <td key={day}>
               {weeklyTasks[day].length > 0 ? (
                 <ul className="list-unstyled mb-0">
-                  {weeklyTasks[day].map((task, index) => (
-                    <li key={index}>{task}</li>
+                  {weeklyTasks[day].map(({ id, content }) => (
+                    <li key={id}>{content}</li>
                   ))}
                 </ul>
               ) : (

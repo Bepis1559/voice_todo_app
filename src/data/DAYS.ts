@@ -1,4 +1,4 @@
-export const DAYS: (keyof weeklyTasks)[] = [
+export const days: (keyof weeklyTasks)[] = [
   "Monday",
   "Tuesday",
   "Wednesday",
