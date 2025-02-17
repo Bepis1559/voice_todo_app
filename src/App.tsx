@@ -7,7 +7,6 @@ function App() {
   return (
     <main>
       <WeeklyTasksTable weeklyTasks={weeklyTasks} />
-      <br />
       {transcript}
       <SpeechButtonsList speak={speak} baseSpeakOptions={baseSpeakOptions} />
     </main>

@@ -75,5 +75,6 @@ main {
   display: flex;
   justify-content: center;
   gap: 1em;
+  margin-block-start: 1em;
   flex-wrap: wrap;
 }
