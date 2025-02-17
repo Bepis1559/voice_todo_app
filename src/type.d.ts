@@ -18,11 +18,7 @@ type commandKeyword = "remove" | "reset" | "all";
 type speechButtonProps = {
   speak: (options: SpeakOptions) => void;
   text: string;
-  baseSpeakOptions: {
-    voice: SpeechSynthesisVoice;
-    rate: number;
-    pitch: number;
-  };
+  baseSpeakOptions: Omit<SpeakOptions, "text">;
   children: ReactNode;
 };
 

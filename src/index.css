@@ -69,3 +69,11 @@ main {
 
   margin-inline: auto;
 }
+
+.speechButtonsList {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  flex-wrap: wrap;
+}
