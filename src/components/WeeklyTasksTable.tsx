@@ -1,17 +1,24 @@
 import Table from "react-bootstrap/Table";
 import "../WeeklyTasksTable.css";
+import { useMemo } from "react";
 type props = {
   weeklyTasks: weeklyTasks;
 };
 export function WeeklyTasksTable({ weeklyTasks }: props) {
-  const days = Object.keys(weeklyTasks) as (keyof weeklyTasks)[];
+  const days = useMemo(() => {
+    return Object.keys(weeklyTasks) as (keyof weeklyTasks)[];
+  }, [weeklyTasks]);
 
   return (
     <Table className="todosTable" responsive bordered>
+      <caption className="hidden">Weekly tasks table</caption>
       <thead>
         <tr>
           {days.map((day) => (
-            <th key={day} className="bg-primary text-white text-center">
+            <th
+              key={day}
+              scope="col"
+              className="bg-primary text-white text-center">
               {day}
             </th>
           ))}

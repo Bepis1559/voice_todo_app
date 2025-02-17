@@ -15,6 +15,7 @@ export function SpeechButton({
           cancel();
         }
       }}
+      aria-label={text}
       type="button"
       className="btn btn-primary">
       {children}

@@ -78,3 +78,8 @@ main {
   margin-block-start: 1em;
   flex-wrap: wrap;
 }
+
+.hidden {
+  opacity: 0;
+  position: absolute;
+}

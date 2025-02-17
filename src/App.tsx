@@ -7,12 +7,14 @@ function App() {
   return (
     <main>
       <WeeklyTasksTable weeklyTasks={weeklyTasks} />
-      {transcript}
       <SpeechButtonsList
         cancel={cancel}
         speak={speak}
         baseSpeakOptions={baseSpeakOptions}
       />
+      <div aria-live="polite" aria-atomic="true" className="hidden">
+        {transcript}
+      </div>
     </main>
   );
 }
