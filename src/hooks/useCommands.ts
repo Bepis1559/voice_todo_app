@@ -4,6 +4,7 @@ import { days } from "../data/days";
 import { v4 as uuidv4 } from "uuid";
 import { type SpeakOptions } from "react-speech-kit";
 import { wordsToIgnoreWhenAddingTask } from "../data/phrases";
+import { generateSpecificCommand } from "../helpers/generateSpecificCommand";
 
 export function useCommands(
   setWeeklyTasks: Dispatch<SetStateAction<weeklyTasks>>,
@@ -12,10 +13,29 @@ export function useCommands(
 ) {
   const commands: Command[] = useMemo(() => {
     return days.flatMap((day) => {
-      const removeCommandWord: commandKeyword = "remove";
-      const removeCommand: Command = {
-        command: `${day} ${removeCommandWord} *`,
-        callback: (voiceInput: string) => {
+      const addCommand = generateSpecificCommand(day, (voiceInput: string) => {
+        if (
+          wordsToIgnoreWhenAddingTask.some((word) =>
+            voiceInput.toLowerCase().includes(word),
+          )
+        ) {
+          return;
+        }
+        setWeeklyTasks((prev) => {
+          speak({
+            text: `${voiceInput} was added to ${day}`,
+            ...baseSpeakOptions,
+          });
+          return {
+            ...prev,
+            [day]: [...prev[day], { id: uuidv4(), content: voiceInput }],
+          };
+        });
+      });
+
+      const removeCommand = generateSpecificCommand(
+        day,
+        (voiceInput: string) => {
           setWeeklyTasks((prev) => {
             const task = prev[day].find(
               ({ content }) => content === voiceInput,
@@ -40,32 +60,27 @@ export function useCommands(
             }
           });
         },
-      };
+        "remove",
+      );
 
-      const addCommand: Command = {
-        command: `${day} *`,
-        callback: (voiceInput: string) => {
-          if (
-            wordsToIgnoreWhenAddingTask.some((word) =>
-              voiceInput.toLowerCase().includes(word),
-            )
-          ) {
-            return;
-          }
+      const resetCommand = generateSpecificCommand(
+        day,
+        () => {
+          speak({
+            text: `Tasks for ${day} have been reset.`,
+            ...baseSpeakOptions,
+          });
           setWeeklyTasks((prev) => {
-            speak({
-              text: `${voiceInput} was added to ${day}`,
-              ...baseSpeakOptions,
-            });
             return {
               ...prev,
-              [day]: [...prev[day], { id: uuidv4(), content: voiceInput }],
+              [day]: [],
             };
           });
         },
-      };
+        "reset",
+      );
 
-      return [removeCommand, addCommand];
+      return [removeCommand, addCommand, resetCommand];
     });
   }, [baseSpeakOptions, setWeeklyTasks, speak]);
 
