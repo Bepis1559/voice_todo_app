@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import SpeechRecognition, {
-  useSpeechRecognition,
-} from "react-speech-recognition";
+import { useSpeechRecognition } from "react-speech-recognition";
 import { useSpeechSynthesis } from "react-speech-kit";
 import { useCommands } from "./useCommands";
 import { getBaseSpeakOptions } from "../helpers/getBaseSpeakOptions";
@@ -18,9 +16,6 @@ export function useAddTask() {
   const { speak, voices } = useSpeechSynthesis();
   const baseSpeakOptions = getBaseSpeakOptions(voices);
 
-  useEffect(() => {
-    SpeechRecognition.startListening({ continuous: true });
-  }, []);
   const commands = useCommands(
     setWeeklyTasks,
     speak,
