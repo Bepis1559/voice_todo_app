@@ -13,7 +13,7 @@ export function useAddTask() {
     Saturday: [],
     Sunday: [],
   });
-  const { speak, voices } = useSpeechSynthesis();
+  const { speak, voices, cancel } = useSpeechSynthesis();
   const baseSpeakOptions = getBaseSpeakOptions(voices);
 
   const commands = useCommands(
@@ -31,5 +31,5 @@ export function useAddTask() {
   useEffect(() => {
     resetTranscript();
   }, [finalTranscript, resetTranscript]);
-  return { weeklyTasks, transcript, speak, baseSpeakOptions };
+  return { weeklyTasks, transcript, speak, baseSpeakOptions, cancel };
 }

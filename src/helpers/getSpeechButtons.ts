@@ -3,16 +3,24 @@ import { instructionsSummary, introSpeech } from "../data/phrases";
 export function getSpeechButtons() {
   const speechButtons: speechButton[] = [
     {
-      textToRead: introSpeech,
+      text: introSpeech,
       buttonText: "Get started",
+      shouldEnableListening: false,
     },
     {
-      textToRead: "Listening for tasks",
-      buttonText: "Start listening",
+      text: "Listening for tasks",
+      buttonText: "Start listening for tasks",
+      shouldEnableListening: true,
     },
     {
-      textToRead: instructionsSummary,
+      text: instructionsSummary,
       buttonText: "Read instructions summary",
+      shouldEnableListening: false,
+    },
+    {
+      text: "Listening stopped",
+      buttonText: "Stop listening for tasks",
+      shouldEnableListening: false,
     },
   ];
 

@@ -15,14 +15,19 @@ type weeklyTasks = {
 
 type commandKeyword = "remove" | "reset" | "all";
 
-type speechButtonProps = {
-  speak: (options: SpeakOptions) => void;
+type buttonBase = {
   text: string;
-  baseSpeakOptions: Omit<SpeakOptions, "text">;
-  children: ReactNode;
 };
 
+type speechButtonProps = {
+  speak: (options: SpeakOptions) => void;
+  baseSpeakOptions: Omit<SpeakOptions, "text">;
+  listenFunc: (options?: ListeningOptions) => Promise<void>;
+  children: ReactNode;
+  cancel?: () => void;
+} & buttonBase;
+
 type speechButton = {
-  textToRead: string;
   buttonText: string;
-};
+  shouldEnableListening: boolean;
+} & buttonBase;
