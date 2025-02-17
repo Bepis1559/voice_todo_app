@@ -6,3 +6,6 @@ export const wordsToIgnoreWhenAddingTask: commandKeyword[] = [
   "reset",
   "all",
 ];
+
+export const instructionsSummary =
+  "Name of the day , and anything after that will add a task. Name of the day remove , and anything after that will remove the task. Name of the day all , will list all of the tasks for the day . Name of the day reset , will remove all the tasks for the day.  ";

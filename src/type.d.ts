@@ -14,3 +14,19 @@ type weeklyTasks = {
 };
 
 type commandKeyword = "remove" | "reset" | "all";
+
+type speechButtonProps = {
+  speak: (options: SpeakOptions) => void;
+  text: string;
+  baseSpeakOptions: {
+    voice: SpeechSynthesisVoice;
+    rate: number;
+    pitch: number;
+  };
+  children: ReactNode;
+};
+
+type speechButton = {
+  textToRead: string;
+  buttonText: string;
+};

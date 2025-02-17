@@ -21,7 +21,12 @@ export function useAddTask() {
   useEffect(() => {
     SpeechRecognition.startListening({ continuous: true });
   }, []);
-  const commands = useCommands(setWeeklyTasks, speak, baseSpeakOptions);
+  const commands = useCommands(
+    setWeeklyTasks,
+    speak,
+    baseSpeakOptions,
+    weeklyTasks,
+  );
 
   const { transcript, resetTranscript, finalTranscript } = useSpeechRecognition(
     {

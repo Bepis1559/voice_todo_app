@@ -1,30 +1,30 @@
+import { SpeechButton } from "./components/speechButton";
 import { WeeklyTasksTable } from "./components/WeeklyTasksTable";
-import { introSpeech } from "./data/phrases";
 import { useAddTask } from "./hooks/useAddTask";
+import { getSpeechButtons } from "./helpers/getSpeechButtons";
+
 function App() {
   const { weeklyTasks, transcript, speak, baseSpeakOptions } = useAddTask();
-
+  const speechButtons = getSpeechButtons();
   return (
     <main>
       <WeeklyTasksTable weeklyTasks={weeklyTasks} />
       <br />
       {transcript}
-      <div>
-        <button
-          onClick={() => speak({ text: introSpeech, ...baseSpeakOptions })}
-          type="button"
-          className="btn btn-primary">
-          Read instructions
-        </button>
-        <button
-          onClick={() =>
-            speak({ text: "Listening for tasks", ...baseSpeakOptions })
-          }
-          type="button"
-          className="btn btn-primary">
-          Start listening
-        </button>
-      </div>
+      <ul>
+        {speechButtons.map(({ textToRead, buttonText }) => {
+          return (
+            <li key={buttonText}>
+              <SpeechButton
+                speak={speak}
+                text={textToRead}
+                baseSpeakOptions={baseSpeakOptions}>
+                {buttonText}
+              </SpeechButton>
+            </li>
+          );
+        })}
+      </ul>
     </main>
   );
 }
