@@ -88,7 +88,7 @@ export function useCommands(
             .map(({ content }) => content)
             .join(" , ");
           speak({
-            text: `Tasks for ${day} are ${tasksForTheDayString}`,
+            text: `Tasks for ${day} are ${tasksForTheDayString ?? "zero"}`,
             ...baseSpeakOptions,
           });
         },
