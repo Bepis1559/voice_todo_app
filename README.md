@@ -1,50 +1,46 @@
-# React + TypeScript + Vite
+# Voice To-Do App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a voice-controlled to-do application that allows users to add, remove, reset, and read tasks for each day of the week using voice commands.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Add tasks to specific days using voice commands.
+- Remove tasks from specific days using voice commands.
+- Reset tasks for specific days using voice commands.
+- Read all tasks for specific days using voice commands.
+- Interactive buttons to control speech recognition and synthesis.
 
-## Expanding the ESLint configuration
+## Installation
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/voice-todo-app.git
+   cd voice-todo-app
 
-- Configure the top-level `parserOptions` property like this:
+ 2. Install dependancies
+    ```bash
+    npm install
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+ 3. Start the development server:
+    ```bash
+    npm run dev
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Usage
+1. Open the application in your browser(non-chromium browsers might not work).
+2. Use the provided buttons to start and stop listening for tasks.
+3. Use voice commands to interact with the application:
+- To add a task: "Monday cooking"
+- To remove a task: "Monday remove cooking"
+- To reset tasks for a day: "Monday reset"
+- To read all tasks for a day: "Monday all"
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+## Dependencies
+- bootstrap: ^5.3.3
+- react: ^19.0.0
+- react-bootstrap: ^2.10.9
+- react-dom: ^19.0.0
+- react-speech-kit: ^3.0.1
+- react-speech-recognition: ^3.10.0
+- regenerator-runtime: ^0.14.1
+- usehooks-ts: ^3.1.1
+- uuid: ^11.0.5
